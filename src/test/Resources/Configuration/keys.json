@@ -1,0 +1,17 @@
+{
+  "Username": "//div//input[@id='user-name']",
+  "Password": "//div//input[@id='password']",
+  "Login_Button": "//div//input[@id='login-button']",
+  "Product_Name": "//div[@class='inventory_item']//div[text()='Sauce Labs Backpack']",
+  "Add_To_Cart": "//button[text()='Add to cart']",
+  "Shopping_Cart": "//a[@class='shopping_cart_link']",
+  "Checkout_Button": "//button[@name='checkout']",
+  "Address_FirstName": "//input[@name='firstName']",
+  "Address_LastName": "//input[@id='last-name']",
+  "Address_PostalCode": "//input[@name='postalCode']",
+  "Address_Continue": "//input[@name='continue']",
+  "Finish": "//button[@name='finish']",
+  "Order_Placed" : "//h2[text()='Thank you for your order!']",
+  "Back_To_Home" : "//button[@id='back-to-products']"
+
+}
