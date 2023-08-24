@@ -61,6 +61,7 @@ public class PageClass extends DriverFactory {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
         element = driver.findElement(By.xpath(xPath));
         element.click();
+
     }
 
     /**

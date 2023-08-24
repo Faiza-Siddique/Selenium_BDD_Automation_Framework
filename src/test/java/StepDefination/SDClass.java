@@ -52,6 +52,7 @@ public class SDClass extends DriverFactory {
     @When("user enter text in username field")
     public void userEnterTextInUsernameField() throws InterruptedException, FileNotFoundException {
         pageClass.enterTextInFieldFromProperties("Username","username");
+        System.out.println("The user enters name in the Username field");
     }
 
     /**
@@ -62,6 +63,7 @@ public class SDClass extends DriverFactory {
     @When("user enter text in password field")
     public void userEnterTextInPasswordField() throws FileNotFoundException {
         pageClass.enterTextInFieldFromProperties("Password", "password");
+        System.out.println("The user enters name in the Username field");
     }
 
     /**
@@ -71,8 +73,9 @@ public class SDClass extends DriverFactory {
      * @throws FileNotFoundException if the property file is not found.
      */
     @Then("user click on the {string}")
-    public void userClickOnThe(String fieldName) throws FileNotFoundException {
+    public void userClickOnThe(String fieldName) throws FileNotFoundException, InterruptedException {
         pageClass.clickButton(fieldName);
+        System.out.println("Then user clicks on the " + fieldName );
     }
 
     /**
@@ -85,6 +88,7 @@ public class SDClass extends DriverFactory {
     @When("user enter text {string} in {string} field")
     public void userEnterTextInField(String value, String fieldName) throws FileNotFoundException {
         pageClass.enterTextInField(value, fieldName);
+        System.out.println("Then user enters text " + value + "in the" +fieldName);
     }
 
     /**
@@ -93,5 +97,6 @@ public class SDClass extends DriverFactory {
     @Given("user Close The Browser")
     public void userCloseTheBrowser() {
         quitDriver();
+        System.out.println("User successfully close the browser");
     }
 }
