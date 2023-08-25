@@ -12,18 +12,18 @@ public class ConfigFileReader {
     /**
      * Retrieves properties from a configuration file based on the provided filename.
      *
-     * @param filename The name of the configuration file (without extension) to read properties from.
+     * @param property The name of the configuration file (without extension) to read properties from.
      * @return A Properties object containing the properties read from the configuration file.
      */
-    static public Properties getProperty(String filename) {
+    static public Properties getProperty(String property) {
         Properties properties = new Properties();
 
         try {
-            File propertyFile = new File("src/test/resources/Configuration/" + filename + ".properties");
+            File propertyFile = new File("src/test/resources/Configuration/" + property + ".properties");
             if (propertyFile.exists())
                 properties.load(new FileInputStream(propertyFile));
             else
-                System.out.println("File not found: " + filename);
+                System.out.println("File not found: " + property);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

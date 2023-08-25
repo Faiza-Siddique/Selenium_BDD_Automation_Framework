@@ -74,7 +74,7 @@ public class SDClass extends DriverFactory {
      */
     @Then("user click on the {string}")
     public void userClickOnThe(String fieldName) throws FileNotFoundException, InterruptedException {
-        pageClass.clickButton(fieldName);
+        pageClass.click(fieldName);
         System.out.println("Then user clicks on the " + fieldName );
     }
 
@@ -88,7 +88,7 @@ public class SDClass extends DriverFactory {
     @When("user enter text {string} in {string} field")
     public void userEnterTextInField(String value, String fieldName) throws FileNotFoundException {
         pageClass.enterTextInField(value, fieldName);
-        System.out.println("Then user enters text " + value + "in the" +fieldName);
+        System.out.println("Then user enters text " + value + " in the " +fieldName);
     }
 
     /**

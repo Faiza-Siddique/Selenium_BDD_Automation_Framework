@@ -4,22 +4,13 @@
  */
 package Pages;
 
-import Utils.ConfigFileReader;
+import Utils.CommonFunctionalities;
 import Utils.DriverFactory;
-import Utils.JsonFileReader;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.io.FileNotFoundException;
-import java.util.Properties;
+
 
 public class PageClass extends DriverFactory {
-
-    private WebElement element;
-    private ConfigFileReader configFileReader = new ConfigFileReader();
-    private Properties properties = configFileReader.getProperty("Config");
-    private JsonFileReader jsonFileReader = new JsonFileReader();
+    CommonFunctionalities commonFunctionalities = new CommonFunctionalities();
 
     /**
      * Default constructor for the PageClass.
@@ -32,7 +23,7 @@ public class PageClass extends DriverFactory {
      * Opens the URL specified in the configuration properties.
      */
     public void openURL() {
-        driver.get(properties.getProperty("url"));
+       commonFunctionalities.navigateToURL();
     }
 
     /**
@@ -43,11 +34,7 @@ public class PageClass extends DriverFactory {
      * @throws FileNotFoundException if property file is not found.
      */
     public void enterTextInFieldFromProperties(String fieldName, String propertyName) throws FileNotFoundException {
-        String xPath = jsonFileReader.readKeyJson(fieldName);
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
-        element = driver.findElement(By.xpath(xPath));
-        element.clear();
-        element.sendKeys(properties.getProperty(propertyName));
+       commonFunctionalities.enterTextInFieldFromPropertiesFile(fieldName, propertyName);
     }
 
     /**
@@ -56,11 +43,8 @@ public class PageClass extends DriverFactory {
      * @param name The name associated with the button element in JSON file.
      * @throws FileNotFoundException if JSON file is not found.
      */
-    public void clickButton(String name) throws FileNotFoundException {
-        String xPath = jsonFileReader.readKeyJson(name);
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
-        element = driver.findElement(By.xpath(xPath));
-        element.click();
+    public void click(String name) throws FileNotFoundException {
+       commonFunctionalities.clickButton(name);
 
     }
 
@@ -72,10 +56,6 @@ public class PageClass extends DriverFactory {
      * @throws FileNotFoundException if JSON file is not found.
      */
     public void enterTextInField(String value, String fieldName) throws FileNotFoundException {
-        String xPath = jsonFileReader.readKeyJson(fieldName);
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
-        element = driver.findElement(By.xpath(xPath));
-        element.clear();
-        element.sendKeys(value);
+       commonFunctionalities.enterTextValue(value, fieldName);
     }
 }
