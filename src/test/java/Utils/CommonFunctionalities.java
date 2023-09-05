@@ -37,6 +37,7 @@ public class CommonFunctionalities extends DriverFactory {
      */
     public void enterTextInFieldFromPropertiesFile(String fieldName, String propertyName) throws FileNotFoundException {
         String xPath = jsonFileReader.readKeyJson(fieldName);
+
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
         element = driver.findElement(By.xpath(xPath));
         element.clear();

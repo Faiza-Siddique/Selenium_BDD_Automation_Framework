@@ -12,7 +12,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = "StepDefination",            // Package containing step definition classes
         features = "src/test/resources/Features",  // Location of feature files
-        monochrome = true                   // Enable readable console output
+        monochrome = true,
+        // Enable readable console output
+        plugin = { "pretty", "json:target/reports/cucumber-reports/cucumber.json"}
 )
 public class TestRunner {
     /**
