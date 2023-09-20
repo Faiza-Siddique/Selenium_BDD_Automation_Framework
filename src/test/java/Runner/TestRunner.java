@@ -14,7 +14,9 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/Features",  // Location of feature files
         monochrome = true,
         // Enable readable console output
-        plugin = { "pretty", "json:target/reports/cucumber-reports/cucumber.json"}
+        plugin = {"pretty", "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"}
+
+
 )
 public class TestRunner {
     /**
@@ -23,4 +25,6 @@ public class TestRunner {
     public TestRunner() {
         // Empty constructor
     }
+
+
 }

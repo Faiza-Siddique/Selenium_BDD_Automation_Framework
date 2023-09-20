@@ -2,10 +2,18 @@ package StepDefination;
 
 import Pages.PageClass;
 import Utils.DriverFactory;
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * The SDClass class defines step definitions for Cucumber scenarios related to browser automation.
@@ -99,4 +107,20 @@ public class SDClass extends DriverFactory {
         quitDriver();
         System.out.println("User successfully close the browser");
     }
+
+    @When("user enter inavalid text in username field")
+    public void userEnterInavalidTextInUsernameField() throws FileNotFoundException {
+        pageClass.enterTextInFieldFromProperties("Username", "invalidUsername");
+        System.out.println("User inputs Incorrect Username ");
+    }
+
+    @After
+    public void TearDown(Scenario sc) throws IOException {
+
+        System.out.println("Sanity After method executed");
+
+        if (sc.isFailed()) {
+            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Failed Screenshot", new ByteArrayInputStream(screenshot));
+        }}
 }
